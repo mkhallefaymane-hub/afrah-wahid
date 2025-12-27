@@ -17,7 +17,9 @@ export default function Admin() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     loginMutation.mutate(password, {
-      onSuccess: () => setIsAuthenticated(true)
+      onSuccess: () => {
+        setIsAuthenticated(true);
+      }
     });
   };
 

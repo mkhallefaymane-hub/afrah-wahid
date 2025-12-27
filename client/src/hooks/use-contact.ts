@@ -69,7 +69,9 @@ export function useMessages() {
   return useQuery({
     queryKey: [api.admin.listMessages.path],
     queryFn: async () => {
-      const res = await fetch(api.admin.listMessages.path);
+      const res = await fetch(api.admin.listMessages.path, {
+        credentials: "include",
+      });
       if (!res.ok) throw new Error("Failed to fetch messages");
       return res.json();
     },

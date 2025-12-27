@@ -5,6 +5,14 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 
+import session from "express-session";
+
+declare module "express-session" {
+  interface SessionData {
+    isAdmin: boolean;
+  }
+}
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
@@ -24,15 +32,14 @@ export async function registerRoutes(
   });
 
   app.get(api.admin.listMessages.path, async (req, res) => {
-    const authHeader = req.headers['x-admin-password'];
     const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
 
-    if (authHeader !== adminPassword) {
-      return res.status(401).json({ message: "Unauthorized" });
+    if (req.session.isAdmin || req.headers['x-admin-password'] === adminPassword) {
+      const messages = await storage.getMessages();
+      return res.json(messages);
     }
 
-    const messages = await storage.getMessages();
-    res.json(messages);
+    res.status(401).json({ message: "Unauthorized" });
   });
 
   app.post(api.admin.login.path, async (req, res) => {
@@ -40,6 +47,7 @@ export async function registerRoutes(
     const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
 
     if (password === adminPassword) {
+      req.session.isAdmin = true;
       res.json({ success: true });
     } else {
       res.status(401).json({ message: "Invalid password" });
