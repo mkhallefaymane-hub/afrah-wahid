@@ -50,18 +50,35 @@ export function Layout({ children, lang }: LayoutProps) {
     setLocation(`/${newLang}${path ? "/" + path : ""}`);
   };
 
-  const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <Link href={`/${lang}${href}`} className={`text-lg font-medium transition-colors hover:text-secondary ${location === `/${lang}${href}` ? 'text-secondary' : 'text-foreground'}`}>
+  const NavLink = ({
+    href,
+    children,
+  }: {
+    href: string;
+    children: React.ReactNode;
+  }) => (
+    <Link
+      href={`/${lang}${href}`}
+      className={`text-lg font-medium transition-colors hover:text-secondary ${location === `/${lang}${href}` ? "text-secondary" : "text-foreground"}`}
+    >
       {children}
     </Link>
   );
 
   return (
-    <div dir={isRTL ? "rtl" : "ltr"} className={`min-h-screen flex flex-col ${isRTL ? "font-ar" : "font-fr"}`}>
+    <div
+      dir={isRTL ? "rtl" : "ltr"}
+      className={`min-h-screen flex flex-col ${isRTL ? "font-ar" : "font-fr"}`}
+    >
       {/* Navbar */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-sm shadow-md py-2" : "bg-transparent py-4"}`}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-sm shadow-md py-2" : "bg-transparent py-4"}`}
+      >
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link href={`/${lang}`} className="text-2xl font-bold text-primary flex items-center gap-2">
+          <Link
+            href={`/${lang}`}
+            className="text-2xl font-bold text-primary flex items-center gap-2"
+          >
             <span className="text-3xl">⚜️</span>
             <span>{lang === "ar" ? "أفراح وحيد" : "Afrah Wahid"}</span>
           </Link>
@@ -73,9 +90,13 @@ export function Layout({ children, lang }: LayoutProps) {
             <NavLink href="/gallery">{t.gallery}</NavLink>
             <NavLink href="/packages">{t.packages}</NavLink>
             <NavLink href="/about">{t.about}</NavLink>
-            
+
             <div className="flex items-center gap-4 border-s ps-4 border-border">
-              <Button onClick={switchLang} variant="ghost" className="font-bold">
+              <Button
+                onClick={switchLang}
+                variant="ghost"
+                className="font-bold"
+              >
                 {lang === "ar" ? "FR" : "AR"}
               </Button>
               <Link href={`/${lang}/contact`}>
@@ -88,14 +109,24 @@ export function Layout({ children, lang }: LayoutProps) {
 
           {/* Mobile Nav */}
           <div className="md:hidden flex items-center gap-2">
-             <Button onClick={switchLang} variant="ghost" size="sm" className="font-bold">
-                {lang === "ar" ? "FR" : "AR"}
-              </Button>
+            <Button
+              onClick={switchLang}
+              variant="ghost"
+              size="sm"
+              className="font-bold"
+            >
+              {lang === "ar" ? "FR" : "AR"}
+            </Button>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon"><Menu /></Button>
+                <Button variant="ghost" size="icon">
+                  <Menu />
+                </Button>
               </SheetTrigger>
-              <SheetContent side={isRTL ? "right" : "left"} className="w-[300px]">
+              <SheetContent
+                side={isRTL ? "right" : "left"}
+                className="w-[300px]"
+              >
                 <nav className="flex flex-col gap-6 mt-10">
                   <NavLink href="">{t.home}</NavLink>
                   <NavLink href="/services">{t.services}</NavLink>
@@ -111,9 +142,7 @@ export function Layout({ children, lang }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow pt-20">
-        {children}
-      </main>
+      <main className="flex-grow pt-20">{children}</main>
 
       {/* WhatsApp Floating Button */}
       <a
@@ -134,25 +163,45 @@ export function Layout({ children, lang }: LayoutProps) {
           <div>
             <h3 className="text-2xl font-bold mb-4 text-accent">Afrah Wahid</h3>
             <p className="opacity-80 leading-relaxed max-w-xs mx-auto md:mx-0">
-              {lang === "ar" 
+              {lang === "ar"
                 ? "نحول أحلامكم إلى حقيقة بلمسة مغربية أصيلة. تنظيم حفلات، أعراس، ومناسبات خاصة."
                 : "Nous transformons vos rêves en réalité avec une touche marocaine authentique."}
             </p>
           </div>
-          
+
           <div className="flex flex-col gap-2">
             <h4 className="font-bold text-lg mb-2 text-accent">{t.contact}</h4>
-            <a href="tel:+212600000000" className="hover:text-accent transition-colors">+212 600 000 000</a>
-            <a href="mailto:contact@afrahwahid.com" className="hover:text-accent transition-colors">contact@afrahwahid.com</a>
+            <a
+              href="tel:+212716594562"
+              className="hover:text-accent transition-colors"
+            >
+              +212716594562
+            </a>
+            <a
+              href="mailto:contact@afrahwahid.com"
+              className="hover:text-accent transition-colors"
+            >
+              contact@afrahwahid.com
+            </a>
             <span className="opacity-80">Marrakech, Maroc</span>
           </div>
 
           <div className="flex flex-col gap-4 items-center md:items-start">
-             <h4 className="font-bold text-lg text-accent">Social</h4>
-             <div className="flex gap-4">
-               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-accent hover:text-primary transition-colors"><Instagram size={20} /></a>
-               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-accent hover:text-primary transition-colors"><Facebook size={20} /></a>
-             </div>
+            <h4 className="font-bold text-lg text-accent">Social</h4>
+            <div className="flex gap-4">
+              <a
+                href="#"
+                className="bg-white/10 p-2 rounded-full hover:bg-accent hover:text-primary transition-colors"
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href="#"
+                className="bg-white/10 p-2 rounded-full hover:bg-accent hover:text-primary transition-colors"
+              >
+                <Facebook size={20} />
+              </a>
+            </div>
           </div>
         </div>
         <div className="container mx-auto px-4 mt-8 pt-8 border-t border-white/10 text-center opacity-60 text-sm">

@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Heart, Music, Camera, UtensilsCrossed } from "lucide-react";
+import { ArrowRight, Star, Heart, UtensilsCrossed } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,72 +12,133 @@ interface HomeProps {
 
 export default function Home({ lang }: HomeProps) {
   const isAr = lang === "ar";
-  
+
   const content = {
     ar: {
       hero: {
         title: "أفراح وحيد — زواق مغربي وتنظيم ديال الأحلام",
         subtitle: "كنهتمّو بالتفاصيل من الحناء حتى لليلة الكبيرة",
         cta: "طلب عرض ثمن",
-        whatsapp: "واتساب دابا"
+        whatsapp: "واتساب دابا",
       },
       services: {
         title: "خدماتنا",
         items: [
-          { title: "العرس المغربي", desc: "تنظيم كامل للزفاف التقليدي والعصري", icon: Heart },
-          { title: "الخطوبة والحناء", desc: "طقوس الحناء ودفوع العروس بأدق التفاصيل", icon: Star },
-          { title: "المناسبات الخاصة", desc: "حفلات عائلية ومناسبات الشركات", icon: UtensilsCrossed },
-        ]
+          {
+            title: "العرس المغربي",
+            desc: "تنظيم كامل للزفاف التقليدي والعصري",
+            icon: Heart,
+          },
+          {
+            title: "الخطوبة والحناء",
+            desc: "طقوس الحناء ودفوع العروس بأدق التفاصيل",
+            icon: Star,
+          },
+          {
+            title: "المناسبات الخاصة",
+            desc: "حفلات عائلية ومناسبات الشركات",
+            icon: UtensilsCrossed,
+          },
+        ],
       },
       steps: {
         title: "كيفاش كنخدمو",
         items: [
           { step: "01", title: "تواصل", desc: "اتصل بنا وناقش فكرتك" },
-          { step: "02", title: "لقاء", desc: "اجتماع لتحديد التفاصيل والميزانية" },
+          {
+            step: "02",
+            title: "لقاء",
+            desc: "اجتماع لتحديد التفاصيل والميزانية",
+          },
           { step: "03", title: "تصميم", desc: "نصممو ليك الديكور والبرنامج" },
-          { step: "04", title: "تنفيذ", desc: "استمتع بليلتك وحنا نتكلفو بالباقي" },
-        ]
+          {
+            step: "04",
+            title: "تنفيذ",
+            desc: "استمتع بليلتك وحنا نتكلفو بالباقي",
+          },
+        ],
       },
       testimonials: {
         title: "آراء الزبائن",
         reviews: [
-          { name: "سارة و أحمد", text: "شكراً بزاف على التنظيم الرائع، كلشي داز كيف ما تمنينا!" },
-          { name: "ليلى م.", text: "خدمة احترافية وديكور كيحمق. تبارك الله عليكم." },
-        ]
-      }
+          {
+            name: "سارة و أحمد",
+            text: "شكراً بزاف على التنظيم الرائع، كلشي داز كيف ما تمنينا!",
+          },
+          {
+            name: "ليلى م.",
+            text: "خدمة احترافية وديكور كيحمق. تبارك الله عليكم.",
+          },
+        ],
+      },
     },
     fr: {
       hero: {
         title: "Afrah Wahid — Mariages & événements au style marocain",
-        subtitle: "Nous prenons soin de chaque détail, du henné jusqu'au grand jour.",
+        subtitle:
+          "Nous prenons soin de chaque détail, du henné jusqu'au grand jour.",
         cta: "Demander un devis",
-        whatsapp: "WhatsApp Direct"
+        whatsapp: "WhatsApp Direct",
       },
       services: {
         title: "Nos Services",
         items: [
-          { title: "Mariage Marocain", desc: "Organisation complète, traditionnelle et moderne", icon: Heart },
-          { title: "Fiançailles & Henné", desc: "Rituels du henné et cadeaux avec soin", icon: Star },
-          { title: "Événements Spéciaux", desc: "Fêtes de famille et événements d'entreprise", icon: UtensilsCrossed },
-        ]
+          {
+            title: "Mariage Marocain",
+            desc: "Organisation complète, traditionnelle et moderne",
+            icon: Heart,
+          },
+          {
+            title: "Fiançailles & Henné",
+            desc: "Rituels du henné et cadeaux avec soin",
+            icon: Star,
+          },
+          {
+            title: "Événements Spéciaux",
+            desc: "Fêtes de famille et événements d'entreprise",
+            icon: UtensilsCrossed,
+          },
+        ],
       },
       steps: {
         title: "Notre Processus",
         items: [
-          { step: "01", title: "Contact", desc: "Contactez-nous pour discuter de votre idée" },
-          { step: "02", title: "Rencontre", desc: "Réunion pour définir les détails et le budget" },
-          { step: "03", title: "Design", desc: "Nous concevons le décor et le programme" },
-          { step: "04", title: "Réalisation", desc: "Profitez de votre soirée, on gère le reste" },
-        ]
+          {
+            step: "01",
+            title: "Contact",
+            desc: "Contactez-nous pour discuter de votre idée",
+          },
+          {
+            step: "02",
+            title: "Rencontre",
+            desc: "Réunion pour définir les détails et le budget",
+          },
+          {
+            step: "03",
+            title: "Design",
+            desc: "Nous concevons le décor et le programme",
+          },
+          {
+            step: "04",
+            title: "Réalisation",
+            desc: "Profitez de votre soirée, on gère le reste",
+          },
+        ],
       },
       testimonials: {
         title: "Témoignages",
         reviews: [
-          { name: "Sara & Ahmed", text: "Merci pour l'organisation incroyable, tout était parfait !" },
-          { name: "Leila M.", text: "Service professionnel et décoration magnifique. Bravo." },
-        ]
-      }
-    }
+          {
+            name: "Sara & Ahmed",
+            text: "Merci pour l'organisation incroyable, tout était parfait !",
+          },
+          {
+            name: "Leila M.",
+            text: "Service professionnel et décoration magnifique. Bravo.",
+          },
+        ],
+      },
+    },
   };
 
   const t = isAr ? content.ar : content.fr;
@@ -88,11 +149,28 @@ export default function Home({ lang }: HomeProps) {
       <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-primary text-primary-foreground">
         {/* Zellige Pattern (very subtle) */}
         <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg
+            width="100%"
+            height="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
             <defs>
-              <pattern id="zellige" x="0" y="0" width="56" height="56" patternUnits="userSpaceOnUse">
+              <pattern
+                id="zellige"
+                x="0"
+                y="0"
+                width="56"
+                height="56"
+                patternUnits="userSpaceOnUse"
+              >
                 <path d="M28 0L56 28L28 56L0 28Z" fill="currentColor" />
-                <path d="M28 14L42 28L28 42L14 28Z" fill="transparent" stroke="currentColor" strokeWidth="2" />
+                <path
+                  d="M28 14L42 28L28 42L14 28Z"
+                  fill="transparent"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
               </pattern>
               <radialGradient id="vignette" cx="50%" cy="40%" r="70%">
                 <stop offset="0%" stopColor="rgba(0,0,0,0)" />
@@ -128,13 +206,19 @@ export default function Home({ lang }: HomeProps) {
             {/* Small brand line */}
             <div className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-accent"></span>
-              <span className={`text-sm tracking-wide opacity-90 ${isAr ? "font-ar" : "font-body-fr"}`}>
-                {isAr ? "لمسة مغربية • جودة سينمائية • تنفيذ احترافي" : "Touche marocaine • Qualité cinématique • Exécution pro"}
+              <span
+                className={`text-sm tracking-wide opacity-90 ${isAr ? "font-ar" : "font-body-fr"}`}
+              >
+                {isAr
+                  ? "لمسة مغربية • جودة سينمائية • تنفيذ احترافي"
+                  : "Touche marocaine • Qualité cinématique • Exécution pro"}
               </span>
             </div>
 
             {/* Title */}
-            <h1 className={`text-5xl md:text-7xl font-extrabold leading-tight ${isAr ? "font-ar" : "font-fr"}`}>
+            <h1
+              className={`text-5xl md:text-7xl font-extrabold leading-tight ${isAr ? "font-ar" : "font-fr"}`}
+            >
               {isAr ? (
                 <>
                   أفراح وحيد
@@ -151,7 +235,9 @@ export default function Home({ lang }: HomeProps) {
             </h1>
 
             {/* Subtitle */}
-            <p className={`text-xl md:text-2xl opacity-90 ${isAr ? "font-ar" : "font-body-fr"}`}>
+            <p
+              className={`text-xl md:text-2xl opacity-90 ${isAr ? "font-ar" : "font-body-fr"}`}
+            >
               {isAr
                 ? "كنحوّلو العرس والمناسبات لتجربة فاخرة: الحناء، الدقة، الزينة… وكل تفصيل محسوب."
                 : "Nous transformons vos événements en expérience élégante : henné, dakka, ziana… chaque détail compte."}
@@ -168,7 +254,7 @@ export default function Home({ lang }: HomeProps) {
                 </Button>
               </Link>
 
-              <a href="tel:+212664111266">
+              <a href="tel:+212716594562">
                 <Button
                   variant="outline"
                   size="lg"
@@ -178,7 +264,11 @@ export default function Home({ lang }: HomeProps) {
                 </Button>
               </a>
 
-              <a href="https://wa.me/212716594562" target="_blank" rel="noreferrer">
+              <a
+                href="https://wa.me/212716594562"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Button
                   variant="outline"
                   size="lg"
@@ -191,18 +281,43 @@ export default function Home({ lang }: HomeProps) {
 
             {/* Trust strip */}
             <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4">
-                <div className="text-accent font-extrabold">{isAr ? "تنظيم كامل" : "Organisation complète"}</div>
-                <div className="text-sm opacity-85">{isAr ? "من الحناء حتى الليلة الكبيرة" : "Du henné au grand jour"}</div>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4">
-                <div className="text-accent font-extrabold">{isAr ? "لمسة مغربية" : "Touche marocaine"}</div>
-                <div className="text-sm opacity-85">{isAr ? "زليج • أقواس • فخامة" : "Zellige • Arches • Luxe"}</div>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4">
-                <div className="text-accent font-extrabold">{isAr ? "سهولة التواصل" : "Contact facile"}</div>
-                <div className="text-sm opacity-85">{isAr ? "واتساب / اتصال سريع" : "WhatsApp / Appel rapide"}</div>
-              </div>
+              {/* Box 1 */}
+              <Link href={`/${lang}/services`}>
+                <div className="cursor-pointer rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4 transition-all hover:bg-white/10 hover:-translate-y-1 hover:shadow-xl">
+                  <div className="text-accent font-extrabold">
+                    {isAr ? "تنظيم كامل" : "Organisation complète"}
+                  </div>
+                  <div className="text-sm opacity-85">
+                    {isAr
+                      ? "من الحناء حتى الليلة الكبيرة"
+                      : "Du henné au grand jour"}
+                  </div>
+                </div>
+              </Link>
+
+              {/* Box 2 */}
+              <Link href={`/${lang}/gallery`}>
+                <div className="cursor-pointer rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4 transition-all hover:bg-white/10 hover:-translate-y-1 hover:shadow-xl">
+                  <div className="text-accent font-extrabold">
+                    {isAr ? "لمسة مغربية" : "Touche marocaine"}
+                  </div>
+                  <div className="text-sm opacity-85">
+                    {isAr ? "زليج • أقواس • فخامة" : "Zellige • Arches • Luxe"}
+                  </div>
+                </div>
+              </Link>
+
+              {/* Box 3 */}
+              <Link href={`/${lang}/contact`}>
+                <div className="cursor-pointer rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4 transition-all hover:bg-white/10 hover:-translate-y-1 hover:shadow-xl">
+                  <div className="text-accent font-extrabold">
+                    {isAr ? "سهولة التواصل" : "Contact facile"}
+                  </div>
+                  <div className="text-sm opacity-85">
+                    {isAr ? "واتساب / اتصال سريع" : "WhatsApp / Appel rapide"}
+                  </div>
+                </div>
+              </Link>
             </div>
 
             {/* Moroccan divider */}
@@ -219,14 +334,18 @@ export default function Home({ lang }: HomeProps) {
       <section className="py-20 bg-background relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-             <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Afrah Wahid</span>
-             <h2 className="text-4xl font-bold text-primary">{t.services.title}</h2>
-             <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">
+              Afrah Wahid
+            </span>
+            <h2 className="text-4xl font-bold text-primary">
+              {t.services.title}
+            </h2>
+            <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {t.services.items.map((item, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -238,14 +357,20 @@ export default function Home({ lang }: HomeProps) {
                     <div className="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary">
                       <item.icon size={32} />
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 text-gray-800">{item.title}</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                      {item.title}
+                    </h3>
                     <p className="text-muted-foreground mb-6 leading-relaxed flex-grow">
                       {item.desc}
                     </p>
                     <Link href={`/${lang}/services`}>
                       <span className="text-secondary font-bold flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer">
-                        {isAr ? "اكتشف المزيد" : "En savoir plus"} 
-                        {isAr ? <ArrowRight className="rotate-180" size={16}/> : <ArrowRight size={16}/>}
+                        {isAr ? "اكتشف المزيد" : "En savoir plus"}
+                        {isAr ? (
+                          <ArrowRight className="rotate-180" size={16} />
+                        ) : (
+                          <ArrowRight size={16} />
+                        )}
                       </span>
                     </Link>
                   </CardContent>
@@ -268,14 +393,20 @@ export default function Home({ lang }: HomeProps) {
             {t.steps.items.map((step, idx) => (
               <div key={idx} className="relative text-center group">
                 <div className="w-20 h-20 mx-auto bg-white rounded-2xl rotate-45 shadow-lg flex items-center justify-center mb-8 border-2 border-accent group-hover:bg-accent group-hover:border-white transition-colors duration-300">
-                  <span className="-rotate-45 text-2xl font-bold text-primary group-hover:text-white">{step.step}</span>
+                  <span className="-rotate-45 text-2xl font-bold text-primary group-hover:text-white">
+                    {step.step}
+                  </span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground text-sm px-4">{step.desc}</p>
-                
+                <p className="text-muted-foreground text-sm px-4">
+                  {step.desc}
+                </p>
+
                 {/* Connector Line (Desktop only) */}
                 {idx < 3 && (
-                  <div className={`hidden md:block absolute top-10 h-0.5 bg-accent/30 w-full ${isAr ? "right-[50%] mr-10" : "left-[50%] ml-10"}`}></div>
+                  <div
+                    className={`hidden md:block absolute top-10 h-0.5 bg-accent/30 w-full ${isAr ? "right-[50%] mr-10" : "left-[50%] ml-10"}`}
+                  ></div>
                 )}
               </div>
             ))}
@@ -288,11 +419,16 @@ export default function Home({ lang }: HomeProps) {
         <div className="container mx-auto px-4">
           <Star className="w-8 h-8 text-accent mx-auto mb-6 fill-current" />
           <h2 className="text-4xl font-bold mb-12">{t.testimonials.title}</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {t.testimonials.reviews.map((review, idx) => (
-              <Card key={idx} className="bg-white/10 border-none backdrop-blur-md text-primary-foreground p-6">
-                <p className="text-lg italic mb-6 font-light">"{review.text}"</p>
+              <Card
+                key={idx}
+                className="bg-white/10 border-none backdrop-blur-md text-primary-foreground p-6"
+              >
+                <p className="text-lg italic mb-6 font-light">
+                  "{review.text}"
+                </p>
                 <div className="font-bold text-accent">— {review.name}</div>
               </Card>
             ))}
