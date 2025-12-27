@@ -146,7 +146,7 @@ export function Layout({ children, lang }: LayoutProps) {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/212600000000"
+        href="https://wa.me/2120716594562"
         target="_blank"
         rel="noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:scale-110 transition-transform duration-200 flex items-center gap-2"
@@ -183,7 +183,7 @@ export function Layout({ children, lang }: LayoutProps) {
             >
               contact@afrahwahid.com
             </a>
-            <span className="opacity-80">Marrakech, Maroc</span>
+            <span className="opacity-80">El Jadida, Maroc</span>
           </div>
 
           <div className="flex flex-col gap-4 items-center md:items-start">
