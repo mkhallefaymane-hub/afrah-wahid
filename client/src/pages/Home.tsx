@@ -85,54 +85,131 @@ export default function Home({ lang }: HomeProps) {
   return (
     <Layout lang={lang}>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-primary text-primary-foreground">
-        {/* Abstract Zellige Pattern SVG Background */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-             <defs>
-               <pattern id="zellige" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                 <path d="M20 0L40 20L20 40L0 20Z" fill="currentColor"/>
-               </pattern>
-             </defs>
-             <rect width="100%" height="100%" fill="url(#zellige)"/>
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-primary text-primary-foreground">
+        {/* Zellige Pattern (very subtle) */}
+        <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <pattern id="zellige" x="0" y="0" width="56" height="56" patternUnits="userSpaceOnUse">
+                <path d="M28 0L56 28L28 56L0 28Z" fill="currentColor" />
+                <path d="M28 14L42 28L28 42L14 28Z" fill="transparent" stroke="currentColor" strokeWidth="2" />
+              </pattern>
+              <radialGradient id="vignette" cx="50%" cy="40%" r="70%">
+                <stop offset="0%" stopColor="rgba(0,0,0,0)" />
+                <stop offset="100%" stopColor="rgba(0,0,0,0.55)" />
+              </radialGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#zellige)" />
+            <rect width="100%" height="100%" fill="url(#vignette)" />
           </svg>
         </div>
 
-        {/* Hero Image Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40 z-10" />
-        {/* Wedding Hall Photo */}
+        {/* Background image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://pixabay.com/get/gbb427055a928ddaea53c8686c03b8ce71ce4d86254851670cb6ededeef7af1fb781ecd3b684e1e4cf8ab6ab65d978f31a3cd4c3675dae423fcef05ee89b51a03_1280.jpg" 
-            alt="Moroccan Wedding Hall" 
+          <img
+            src="https://pixabay.com/get/gbb427055a928ddaea53c8686c03b8ce71ce4d86254851670cb6ededeef7af1fb781ecd3b684e1e4cf8ab6ab65d978f31a3cd4c3675dae423fcef05ee89b51a03_1280.jpg"
+            alt={isAr ? "قاعة عرس مغربي" : "Salle de mariage marocain"}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
 
-        <div className="container mx-auto px-4 relative z-20 pt-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+        {/* Luxury overlays */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-primary/65 to-black/80" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-primary/80 via-transparent to-primary/35" />
+
+        <div className="container mx-auto px-4 relative z-20 pt-24 pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl space-y-6"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-3xl space-y-7"
           >
-            <h1 className={`text-5xl md:text-7xl font-bold leading-tight ${isAr ? "font-ar" : "font-fr"}`}>
-              {t.hero.title}
+            {/* Small brand line */}
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-accent"></span>
+              <span className={`text-sm tracking-wide opacity-90 ${isAr ? "font-ar" : "font-body-fr"}`}>
+                {isAr ? "لمسة مغربية • جودة سينمائية • تنفيذ احترافي" : "Touche marocaine • Qualité cinématique • Exécution pro"}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1 className={`text-5xl md:text-7xl font-extrabold leading-tight ${isAr ? "font-ar" : "font-fr"}`}>
+              {isAr ? (
+                <>
+                  أفراح وحيد
+                  <br />
+                  فن مغربي راقٍ لتوثيق أجمل لحظاتكم
+                </>
+              ) : (
+                <>
+                  Afrah Wahid
+                  <br />
+                  L’art marocain au service de vos plus beaux moments
+                </>
+              )}
             </h1>
-            <p className={`text-xl md:text-2xl text-accent opacity-90 ${!isAr && "font-body-fr"}`}>
-              {t.hero.subtitle}
+
+            {/* Subtitle */}
+            <p className={`text-xl md:text-2xl opacity-90 ${isAr ? "font-ar" : "font-body-fr"}`}>
+              {isAr
+                ? "كنحوّلو العرس والمناسبات لتجربة فاخرة: الحناء، الدقة، الزينة… وكل تفصيل محسوب."
+                : "Nous transformons vos événements en expérience élégante : henné, dakka, ziana… chaque détail compte."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link href={`/${lang}/contact`}>
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-full font-bold shadow-xl shadow-black/20 transition-all hover:-translate-y-1">
-                  {t.hero.cta}
+                <Button
+                  size="lg"
+                  className="bg-accent text-accent-foreground hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-full font-extrabold shadow-2xl shadow-black/30 transition-all hover:-translate-y-1"
+                >
+                  {isAr ? "اطلب عرض ثمن" : "Demander un devis"}
                 </Button>
               </Link>
-              <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer">
-                <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-full font-bold backdrop-blur-sm">
-                  {t.hero.whatsapp}
+
+              <a href="tel:+212664111266">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-white border-white/30 hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-full font-bold backdrop-blur-md"
+                >
+                  {isAr ? "اتصل بنا الآن" : "Appeler maintenant"}
                 </Button>
               </a>
+
+              <a href="https://wa.me/212716594562" target="_blank" rel="noreferrer">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-white border-white/30 hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-full font-bold backdrop-blur-md"
+                >
+                  {isAr ? "واتساب دابا" : "WhatsApp Direct"}
+                </Button>
+              </a>
+            </div>
+
+            {/* Trust strip */}
+            <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4">
+                <div className="text-accent font-extrabold">{isAr ? "تنظيم كامل" : "Organisation complète"}</div>
+                <div className="text-sm opacity-85">{isAr ? "من الحناء حتى الليلة الكبيرة" : "Du henné au grand jour"}</div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4">
+                <div className="text-accent font-extrabold">{isAr ? "لمسة مغربية" : "Touche marocaine"}</div>
+                <div className="text-sm opacity-85">{isAr ? "زليج • أقواس • فخامة" : "Zellige • Arches • Luxe"}</div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4">
+                <div className="text-accent font-extrabold">{isAr ? "سهولة التواصل" : "Contact facile"}</div>
+                <div className="text-sm opacity-85">{isAr ? "واتساب / اتصال سريع" : "WhatsApp / Appel rapide"}</div>
+              </div>
+            </div>
+
+            {/* Moroccan divider */}
+            <div className="pt-10 flex items-center gap-4 opacity-80">
+              <div className="h-px flex-1 bg-white/15"></div>
+              <div className="text-accent tracking-[0.5em]">✦ ✦ ✦</div>
+              <div className="h-px flex-1 bg-white/15"></div>
             </div>
           </motion.div>
         </div>
